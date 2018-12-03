@@ -1,7 +1,9 @@
 ---
-title: "Holy cow!"
+title: "Suicide Rates by Races, Gender and Ages in United States, 2011-2017"
+
 ---
 
-### I have a webpage!
+### Motivation
 
-And I can put all kinds of stuff on it!
+[Text]
+
