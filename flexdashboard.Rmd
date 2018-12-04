@@ -82,16 +82,95 @@ data_IM_JZ %>%
   ggtitle('Suicide Death Rate by Age')
 ```
 
-Column {data-width=650}
+```{r BRFSS_IM_year_race}
+BRFSS_race_plot =
+data_BRFSS_JZ %>% 
+  mutate(., race_ethnicity = str_replace(race_ethnicity, 'American Indian or Alaskan Native, non-Hispanic', 'Other'),
+            race_ethnicity = str_replace(race_ethnicity, 'Asian, non-Hispanic', 'Other'),
+            race_ethnicity = str_replace(race_ethnicity, 'Multiracial, non-Hispanic', 'Other'),
+            race_ethnicity = str_replace(race_ethnicity, 'Native Hawaiian or other Pacific Islander, non-Hispanic', 'Other'),
+            race_ethnicity = str_replace(race_ethnicity, 'Other, non-Hispanic', 'Other')) %>%  
+  filter(., race_ethnicity != 'NA') %>% 
+  group_by(., year, response, race_ethnicity) %>% 
+  summarize(., sum_sample_size = sum(sample_size)) %>% 
+  spread(., key = response, value = sum_sample_size) %>% 
+  mutate(., prevalence = (Yes / (Yes + No)),
+    ci_low = prevalence - qnorm(.975) * sqrt(prevalence * (1 - prevalence) / (Yes + No)),
+    ci_high = prevalence + qnorm(.975) * sqrt(prevalence * (1 - prevalence) / (Yes + No))) %>%
+  mutate(., race_ethnicity = forcats::fct_relevel(race_ethnicity,
+                     c('Hispanic', 'Black, non-Hispanic', 'White, non-Hispanic', 'Other'))) %>%
+  ggplot(., aes(x = year, y = prevalence, color = race_ethnicity)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.1, alpha = 0.8) + 
+  theme(legend.position = 'bottom', legend.text = element_text(size=5), legend.box = 'vertical', legend.key.size = unit(0.4, 'cm')) +
+  ggtitle('Depression Prevalence by Race')
+
+IM_race_plot =
+data_IM_JZ %>% 
+  group_by(., year, race) %>%
+  summarize(., sum_deaths = sum(deaths), population = sum(population)) %>% 
+  mutate(., death_rate = (sum_deaths / population),
+    ci_low = death_rate - qnorm(.975) * sqrt(death_rate * (1 - death_rate) / population),
+    ci_high = death_rate + qnorm(.975) * sqrt(death_rate * (1 - death_rate) / population)) %>% 
+  ggplot(., aes(x = year, y = death_rate, color = race)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.5, alpha = 0.5) + 
+  theme(legend.position = 'bottom', legend.text = element_text(size=5), legend.box = 'vertical', legend.key.size = unit(0.4, 'cm')) +
+  ggtitle('Suicide Death Rate by Age')
+```
+
+```{r BRFSS_IM_year_gender}
+BRFSS_gender_plot = 
+data_BRFSS_JZ %>% 
+  filter(., gender != 'NA') %>% 
+  group_by(., year, gender, response) %>% 
+  summarize(., sum_sample_size = sum(sample_size)) %>% 
+  spread(., key = response, value = sum_sample_size) %>% 
+  mutate(., prevalence = (Yes / (Yes + No)),
+    ci_low = prevalence - qnorm(.975) * sqrt(prevalence * (1 - prevalence) / (Yes + No)),
+    ci_high = prevalence + qnorm(.975) * sqrt(prevalence * (1 - prevalence) / (Yes + No))) %>% 
+  ggplot(., aes(x = year, y = prevalence, color = gender)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.5, alpha = 1) +
+  theme(legend.position = 'bottom', legend.text = element_text(size=6), legend.box = 'vertical', legend.key.size = unit(1, 'cm')) +
+  ggtitle('Depression Prevalence by Genders')
+
+IM_gender_plot = 
+data_IM_JZ %>% 
+  group_by(., year, sex) %>% 
+  summarize(., sum_deaths = sum(deaths), population = sum(population)) %>% 
+  mutate(., death_rate = (sum_deaths / population),
+    ci_low = death_rate - qnorm(.975) * sqrt(death_rate * (1 - death_rate) / population),
+    ci_high = death_rate + qnorm(.975) * sqrt(death_rate * (1 - death_rate) / population)) %>% 
+  ggplot(., aes(x = year, y = death_rate, color = sex)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.5, alpha = 0.8) + 
+  theme(legend.position = 'bottom', legend.text = element_text(size=6), legend.box = 'vertical', legend.key.size = unit(1, 'cm')) +
+  ggtitle('Suicide Death Rate by Age')
+```
+
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ### Maximum Temperature in Central Park, Waikiki, and Waterhole
 
 ```{r chart a}
-ggplotly(BRFSS_age_plot)
+subplot(ggplotly(BRFSS_age_plot), ggplotly(IM_age_plot))
+
 ```
 
-Column {data-width=350}
+```{r}
+
+```
+
+```{r}
+
+```
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ### Plot of Temperature in Central Park
@@ -106,3 +185,6 @@ Column {data-width=350}
 
 ```
 
+```{r}
+
+```
