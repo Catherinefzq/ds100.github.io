@@ -1,15 +1,16 @@
-name: "Yay internet!"
+name: "zhiqian website"
 output_dir: "."
+create_dir: false
 navbar:
-  title: "Home"
+  title: Home
   right:
-    - text: "Dashboard_test"
-    　 href: dashboard_1.html
     - text: "About"
       href: about.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
-    - icon: fa-github fa-lg
-      href: http://github.com/<YOUR_GH_NAME>/
+      href: mailto:<zf2212@cumc.columbia.edu>
+    - text: "Dashboard"
+      href: flexdashboard.html 
+    
 output:
-  html_document
+  html_document:
+    theme: journal

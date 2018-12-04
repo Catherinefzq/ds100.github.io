@@ -1,0 +1,74 @@
+---
+title: "flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(rnoaa)
+library(plotly)
+```
+```{r import and clean data}
+# pull the noaa data 
+weather = 
+  meteo_pull_monitors(c("USW00094728", "USC00519397", "USS0023B17S"),
+                      var = c("PRCP", "TMIN", "TMAX"), 
+                      date_min = "2016-01-01",
+                      date_max = "2016-12-31") %>%
+  mutate(
+    name = recode(id, USW00094728 = "CentralPark_NY", 
+                      USC00519397 = "Waikiki_HA",
+                      USS0023B17S = "Waterhole_WA"),
+    tmin = tmin / 10,
+    tmax = tmax / 10) %>%
+  select(name, id, everything())
+
+# nest the data
+weather_nest = weather %>%  
+  group_by(name, id) %>% 
+  nest(., date:tmin)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Maximum Temperature in Central Park, Waikiki, and Waterhole
+
+```{r chart a}
+# plot the tmax in three location
+weather %>% 
+plot_ly(y = ~tmax, color = ~name, type = "box",
+          colors = "Set2")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Plot of Temperature in Central Park
+
+```{r}
+# plot the distribution of tmax and tmin in central park 
+weather_nest$data[[1]] %>%
+  plot_ly(x = ~tmin, y = ~tmax, type = "scatter", mode = "markers",
+          alpha = 0.5)
+```
+
+### Plot of Temperature in Waikiki
+
+```{r}
+# Plot the tmax and tmin in waikiki
+waikiki_data = weather_nest$data[[2]] %>% 
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_smooth() +
+  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+ggplotly(waikiki_data)
+```
+
