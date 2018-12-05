@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-<br><br><img src="images/suicide.jpg" alt="logo" style="width:100%"><br>
+<br><br><img src="images/suicide.jpg" alt="logo"><br>
 
 ### Motivation
 
