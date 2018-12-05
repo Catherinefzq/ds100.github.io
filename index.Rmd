@@ -16,7 +16,7 @@ Suicide is a leading cause of death in the US. Suicide rates increased in nearly
 
 Suicide has ranked as the 10th leading cause of death among Americans for many years. https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
 
-# __Initial Questions__
+# __Research Questions__
 
 The initial thought of this project is to discover the relationship between suicide and people's mental status. We have found two separated datasets, in which one is the Injury Mortality data in the US, the other contains people's depression status in the US. Since both of the two datasets contain information for age, race, and gender, we decided to compare the trend of suicide death rates with depression prevalence under these three categories.
 
@@ -39,11 +39,15 @@ This dataset describes injury mortality in the United States beginning in 1999. 
 
 We explore our data by race, gender, and age. Our findings are include in the [dashboards](dashboard.html).
 
+By age, we found people from 25-64 has a high prevalence of depression which is consistent with the suicide death rate. However, age group '65+' having a relative low depression prevalence, their suicide rate remains relatively high.
+
+By race, Non-Hispanic White people have both high depression prevalence as well as suicide rate.
+
+By gender, female tend to have a higher depression prevalence than male. However, their suicide rate is much lower than that of male. 
 
 ## Statistical Analysis
 
-Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS dataset. 
-
+Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS Injury Mortality dataset. 
 __Model 1:__ Suicide Death Rate = 7.84 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.745 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65} + 0.212 I{year = 2012} + 0.215 I{year = 2013} + 0.707 I{year = 2014} + 0.778 I{year = 2015} + 1.05 I{year = 2016}
 
 __Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
@@ -54,4 +58,18 @@ __Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic
 
 # __Conclusion__
 
-[What were your findings? Are they what you expect? What insights into the data can you make?]
+Depression is an insufficient and unnecessary causal factor for suicide, we see similar trend for the three groups (age, race, gender) with some exceptions. Overall, suicide death rate and depression prevalence do vary among the three proposed factors. However, the direct association between depression and suicide may be difficult to test. For rare cases like suicide, case-control study should be a suitable way to conduct the research, while the psychological status like depression are really complicated to detect, especially for suicide cases.
+
+# __Reference__
+
+<span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
+[1] Holmes, L. (2018). Has the Rate of Suicide in the U.S. Risen? Retrieved from https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
+</span><br/>
+<span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
+[2] Vijayakumar L. (2015). Suicide in women. _Indian journal of psychiatry_, 57(Suppl 2), S233-8.
+</span><br/>
+<span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
+[3] Centers for disease control and prevention. (2018). Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data (2011 to present) | Chronic Disease and Health Promotion Data & Indicators. Retrieved from https://chronicdata.cdc.gov/Behavioral-Risk-Factors/Behavioral-Risk-Factor-Surveillance-System-BRFSS-P/dttw-5yxu
+</span><br/>
+<span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
+[4] National Center for Health Statistics. (2018). NCHS - Injury Mortality: United States | Data. Retrieved from https://data.cdc.gov/NCHS/NCHS-Injury-Mortality-United-States/nt65-c7a7 </span>
