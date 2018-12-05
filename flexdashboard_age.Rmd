@@ -78,7 +78,6 @@ data_IM_JZ %>%
   geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.3, alpha = 0.8) + 
   theme(legend.position = 'bottom', legend.text = element_text(size=6), legend.box = 'vertical', legend.key.size = unit(0.5, 'cm')) +
   ggtitle('Suicide Death Rate by Age')
-
 ```
 
 Column {data-width=500}
