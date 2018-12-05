@@ -7,11 +7,10 @@ output:
 ---
 
 
-```{r setup, include=FALSE}
+```{r package_import, setup, include = FALSE}
 library(flexdashboard)
 library(tidyverse)
 library(viridis)
-library(rnoaa)
 library(plotly)
 
 
@@ -84,7 +83,7 @@ Column {data-width=500}
 
 ### BRFSS_race
 
-```{r}
+```{r BRFSS_race}
 ggplotly(BRFSS_race_plot)
 
 ```
@@ -94,6 +93,6 @@ Column {data-width=500}
 
 ### Injury_race
 
-```{r}
+```{r Injury_race}
 ggplotly(IM_race_plot)
 ```

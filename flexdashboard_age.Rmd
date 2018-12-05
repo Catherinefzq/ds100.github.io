@@ -6,11 +6,10 @@ output:
     vertical_layout: fill
 ---
 
-```{r setup, include=FALSE}
+```{r package_import, setup, include = FALSE}
 library(flexdashboard)
 library(tidyverse)
 library(viridis)
-library(rnoaa)
 library(plotly)
 
 
@@ -76,7 +75,8 @@ data_IM_JZ %>%
   geom_point() +
   geom_line() +
   geom_errorbar(aes(ymax = ci_high, ymin = ci_low), width = 0.3, alpha = 0.8) + 
-  theme(legend.position = 'bottom', legend.text = element_text(size=6), legend.box = 'vertical', legend.key.size = unit(0.5, 'cm')) +
+  theme(legend.position = 'bottom', legend.text = element_text(size = 6),
+        legend.box = 'vertical', legend.key.size = unit(0.5, 'cm')) +
   ggtitle('Suicide Death Rate by Age')
 ```
 
@@ -85,7 +85,7 @@ Column {data-width=500}
 
 ### BRFSS_age
 
-```{r}
+```{r BRFSS_age}
 ggplotly(BRFSS_age_plot)
 
 ```
@@ -95,6 +95,6 @@ Column {data-width=500}
 
 ### Injury_age
 
-```{r}
+```{r Injury_age}
 ggplotly(IM_age_plot)
 ```
