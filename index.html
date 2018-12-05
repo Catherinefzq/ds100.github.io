@@ -367,7 +367,7 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">7.840</td>
+<td align="right">8.334</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="even">
@@ -378,7 +378,7 @@ div.tocify {
 <tr class="odd">
 <td align="left">race: Non-Hispanic black</td>
 <td align="right">-0.912</td>
-<td align="right">0.399</td>
+<td align="right">0.394</td>
 </tr>
 <tr class="even">
 <td align="left">race: Non-Hispanic white</td>
@@ -400,45 +400,98 @@ div.tocify {
 <td align="right">6.362</td>
 <td align="right">0.000</td>
 </tr>
-<tr class="even">
-<td align="left">year: 2012</td>
-<td align="right">0.212</td>
-<td align="right">0.890</td>
-</tr>
-<tr class="odd">
-<td align="left">year: 2013</td>
-<td align="right">0.215</td>
-<td align="right">0.888</td>
-</tr>
-<tr class="even">
-<td align="left">year: 2014</td>
-<td align="right">0.707</td>
-<td align="right">0.644</td>
-</tr>
-<tr class="odd">
-<td align="left">year: 2015</td>
-<td align="right">0.778</td>
-<td align="right">0.611</td>
-</tr>
-<tr class="even">
-<td align="left">year: 2016</td>
-<td align="right">1.050</td>
-<td align="right">0.492</td>
-</tr>
 </tbody>
 </table>
 </div>
 <div id="model-2" class="section level3">
 <h3>Model 2</h3>
 <p><strong>Model 2(Age):</strong> Depression Rate = 16.486 + 2.31 I{25 &lt; age &lt; 44} + 4.528 I{45 &lt; age &lt; 64} - 2.125 I{age &gt;= 65}</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">16.486</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">age_group: 25-44</td>
+<td align="right">2.310</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">age_group: 45-64</td>
+<td align="right">4.528</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">age_group: 65+</td>
+<td align="right">-2.125</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="model-3" class="section level3">
 <h3>Model 3</h3>
 <p><strong>Model 3(Gender):</strong> Depression Rate = 13.66 + 9.028 I{gender = female}</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">13.660</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">gender: 1</td>
+<td align="right">9.028</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="model-4" class="section level3">
 <h3>Model 4</h3>
 <p><strong>Model 4(Race):</strong> Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">17.511</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">race: Black, non-Hispanic</td>
+<td align="right">-1.716</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">race: White, non-Hispanic</td>
+<td align="right">1.901</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

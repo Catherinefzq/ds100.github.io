@@ -86,31 +86,91 @@ new_injury =
 __Model 1:__ Suicide Death Rate = 8.334 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.475 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65}
 
 ```{r}
-fit_suicide = lm(suicide_dr ~ sex + race + age_group_years + year, data = new_injury)
-summary(fit_suicide) %>% 
+fit_suicide_final = lm(suicide_dr ~ sex + race + age_group_years, data = new_injury)
+summary(fit_suicide_final) %>%
   broom::tidy() %>% 
   select(term, estimate, p.value) %>%
   mutate(term = str_replace(term, "^sex", "sex: "),
          term = str_replace(term, "^race", "race: "),
-         term = str_replace(term, "^age_group_years", "age group years: "),
-         term = str_replace(term, "^year", "year: ")) %>% 
+         term = str_replace(term, "^age_group_years", "age group years: ")) %>% 
   knitr::kable(digits = 3)
 
 ```
 
 
 ### Model 2
+
 __Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
+
+```{r}
+new_brfss_age =
+  brfss_data %>% 
+  filter(response == "Yes",
+         age_group != "",
+         data_value != "") %>%
+  mutate(age_group = str_replace(age_group, "18-24", "<25"),
+         age_group = str_replace(age_group, "25-34", "25-44"),
+         age_group = str_replace(age_group,"35-44", "25-44"),
+         age_group = str_replace(age_group,"45-54", "45-64"),
+         age_group = str_replace(age_group,"55-64", "45-64")) %>% 
+  select(data_value, age_group) %>% 
+  mutate(age_group = as.factor(age_group))
+fit_age = lm(data_value ~ age_group, data = new_brfss_age)
+summary(fit_age) %>% 
+  broom::tidy() %>% 
+  select(term, estimate, p.value) %>%
+  mutate(term = str_replace(term, "age_group", "age_group: "))%>% 
+  knitr::kable(digits = 3)
+```
+
 
 
 ### Model 3
-
 __Model 3(Gender):__ Depression Rate = 13.66 + 9.028 I{gender = female}
 
 
-### Model 4
+```{r}
+new_brfss_gender =
+  brfss_data %>% 
+  filter(year %in% c(2011, 2012, 2013, 2014, 2015, 2016),
+         response == "Yes",
+         gender != "",
+         data_value != "") %>%
+  mutate(total_sp = sample_size/(data_value/100)) %>% 
+  select(data_value, gender) %>% 
+  mutate(gender = as.factor(ifelse(gender == "Male", 0, 1)))
+fit_gender = lm(data_value ~ gender, data = new_brfss_gender)
+summary(fit_gender) %>% 
+  broom::tidy() %>% 
+  select(term, estimate, p.value) %>%
+  mutate(term = str_replace(term, "^gender", "gender: "))%>% 
+  knitr::kable(digits = 3)
+```
 
+
+
+### Model 4
 __Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}
+
+
+```{r warning = F}
+new_brfss_race =
+  brfss_data %>% 
+  filter(year %in% c(2011, 2012, 2013, 2014, 2015, 2016),
+         response == "Yes",
+         race_ethnicity == "Black, non-Hispanic" | race_ethnicity == "White, non-Hispanic" | race_ethnicity == "Hispanic",
+          data_value != "") %>%
+  select(data_value, race_ethnicity) %>% 
+  mutate(race_ethnicity = as.factor(race_ethnicity),
+         race_ethnicity = fct_relevel(race_ethnicity, race_ethnicity = c("Hispanic", "Black, non-Hispanic", "White, non-Hispanic")))
+fit_race = lm(data_value ~ race_ethnicity, data = new_brfss_race)
+summary(fit_race) %>% 
+  broom::tidy() %>% 
+  select(term, estimate, p.value) %>%
+  mutate(term = str_replace(term, "^race_ethnicity", "race: "))%>% 
+  knitr::kable(digits = 3)
+```
+
 
 # __Conclusion__
 
