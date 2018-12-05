@@ -4,12 +4,12 @@ create_dir: false
 navbar:
   title: Home
   right:
+    - text: "Dashboard"
+      href: dashboard.html 
     - text: "About"
       href: about.html
     - icon: fa-github
       href: https://github.com/Catherinefzq/ds100.github.io
-    - text: "Dashboard"
-      href: dashboard.html 
     
 output:
   html_document:

@@ -1,5 +1,5 @@
 ---
-title: "Suicide Rates by Races, Gender and Ages in United States, 2011-2017"
+title: "The Relationship between Suicide Rates and Depression Prevalence by Race, Gender and Age in the U.S."
 output: 
    html_document:
     toc: true
