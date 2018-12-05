@@ -60,7 +60,7 @@ __Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic
 
 Depression is an insufficient and unnecessary causal factor for suicide, we see similar trend for the three groups (age, race, gender) with some exceptions. Overall, suicide death rate and depression prevalence do vary among the three proposed factors. However, the direct association between depression and suicide may be difficult to test. For rare cases like suicide, case-control study should be a suitable way to conduct the research, while the psychological status like depression are really complicated to detect, especially for suicide cases.
 
-# __Reference__
+__Reference__
 
 <span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
 [1] Holmes, L. (2018). Has the Rate of Suicide in the U.S. Risen? Retrieved from https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
