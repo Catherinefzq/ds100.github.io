@@ -1,5 +1,6 @@
 ---
 title: "The Relationship between Suicide Rate and Depression Prevalence by Race, Gender and Age in the U.S."
+author: "Yue Gu (yg2625), Jianghui Lin (jl5172), Junyuan Zheng (jz3036), Jianyou Liu (jl5296), Zhiqian Fang (zf2212)"
 output: 
    html_document:
     toc: true
@@ -15,8 +16,8 @@ Suicide is a leading cause of death in the US. Suicide rates increased in nearly
 # __Related work__
 
 Suicide has ranked as the 10th leading cause of death among Americans for many years. 
-Here is the link for report that inspired us. https://afsp.org/about-suicide/suicide-statistics/ 
-This report summarizes the suicide rates by race and age. In addition, they also include the most common suicide methods and data for suicide attempt.
+Here is the link for the report that inspired us. https://afsp.org/about-suicide/suicide-statistics/ 
+This report summarizes the suicide rates by race and age. In addition, they also include the most common suicide methods and data for a suicide attempt.
 
 # __Research Questions__
 
@@ -39,13 +40,13 @@ This dataset describes injury mortality in the United States beginning in 1999. 
 
 ## Data Visualizations
 
-We explore our data by race, gender, and age. Our findings are include in the [dashboards](dashboard.html).
+We explore our data by race, gender, and age. Our findings are included in the [dashboards](dashboard.html).
 
 By age, we found people from 25-64 has a high prevalence of depression which is consistent with the suicide death rate. However, age group '65+' having a relative low depression prevalence, their suicide rate remains relatively high.
 
 By race, Non-Hispanic White people have both high depression prevalence as well as suicide rate.
 
-By gender, female tend to have a higher depression prevalence than male. However, their suicide rate is much lower than that of male. 
+By gender, females tend to have a higher depression prevalence than male. However, their suicide rate is much lower than that of males. 
 
 ## Statistical Analysis
 
@@ -180,7 +181,7 @@ summary(fit_race) %>%
 
 # __Conclusion__
 
-Depression is an insufficient and unnecessary causal factor for suicide, we see similar trends for two groups (age, race) but the pattern observed for gender was opposite in suicide death rate and depression prevalence. We thought this was because although females tend to have a higher depression rate then males, they are less impetuous and hence have a less chance of committing suicide. Overall, suicide death rate and depression prevalence do vary among the three proposed factors; however, the direct association between depression and suicide may be difficult to test. For rare cases such as suicide, case-control study should be a suitable way to conduct the research by carefully selecting the cases and controls and examining their odds ratio of being exposed to depression. The challenge is that psychological status such as depression is hardly detected accurately, and people may not be willing to report authentic information which potentially leads to bias when analyzing the results. Generally speaking, our project was successful in exploring the relationship between suicide death rate and depresion prevalence among "Age", "Race", and "Gender".
+Depression is an insufficient and unnecessary causal factor for suicide, we see similar trends for two groups (age, race) but the pattern observed for gender was opposite in suicide death rate and depression prevalence. We thought this was because although females tend to have a higher depression rate than males, they are less impetuous and hence have a less chance of committing suicide. Overall, suicide death rate and depression prevalence do vary among the three proposed factors; however, the direct association between depression and suicide may be difficult to test. For rare cases such as suicide, a case-control study should be a suitable way to conduct the research by carefully selecting the cases and controls and examining their odds ratio of being exposed to depression. The challenge is that psychological status such as depression is hardly detected accurately, and people may not be willing to report authentic information which potentially leads to bias when analyzing the results. Generally speaking, our project was successful in exploring the relationship between suicide death rate and depression prevalence among "Age", "Race", and "Gender".
 
 __Reference__
 
