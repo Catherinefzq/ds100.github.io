@@ -14,7 +14,9 @@ Suicide is a leading cause of death in the US. Suicide rates increased in nearly
 
 # __Related work__
 
-Suicide has ranked as the 10th leading cause of death among Americans for many years. https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
+Suicide has ranked as the 10th leading cause of death among Americans for many years. 
+Here is the link for report that inspired us. https://afsp.org/about-suicide/suicide-statistics/ 
+This report summarizes the suicide rates by race and age. In addition, they also include the most common suicide methods and data for suicide attempt.
 
 # __Research Questions__
 
@@ -56,7 +58,7 @@ library(tidyverse)
 ```
 
 
-```{r, message = FALSE}
+```{r data cleaning, message = FALSE}
 brfss_data = read_csv("./data/brfss_data.csv") %>% 
   janitor::clean_names()
 injury_data = read_csv("./data/NCHS_-_Injury_Mortality__United_States.csv") %>% 
@@ -85,7 +87,7 @@ new_injury =
 ### Model 1
 __Model 1:__ Suicide Death Rate = 8.334 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.475 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65}
 
-```{r}
+```{r suicide death rate model}
 fit_suicide_final = lm(suicide_dr ~ sex + race + age_group_years, data = new_injury)
 summary(fit_suicide_final) %>%
   broom::tidy() %>% 
@@ -103,7 +105,7 @@ summary(fit_suicide_final) %>%
 
 __Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
 
-```{r}
+```{r age model}
 new_brfss_age =
   brfss_data %>% 
   filter(response == "Yes",
@@ -131,7 +133,7 @@ summary(fit_age) %>%
 __Model 3(Gender):__ Depression Rate = 13.66 + 9.028 I{gender = female}
 
 
-```{r}
+```{r gender model}
 new_brfss_gender =
   brfss_data %>% 
   filter(year %in% c(2011, 2012, 2013, 2014, 2015, 2016),
@@ -156,7 +158,7 @@ summary(fit_gender) %>%
 __Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}
 
 
-```{r warning = F}
+```{r race model,warning = F}
 new_brfss_race =
   brfss_data %>% 
   filter(year %in% c(2011, 2012, 2013, 2014, 2015, 2016),
@@ -183,7 +185,7 @@ Depression is an insufficient and unnecessary causal factor for suicide, we see 
 __Reference__
 
 <span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
-[1] Holmes, L. (2018). Has the Rate of Suicide in the U.S. Risen? Retrieved from https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
+[1] American Foundation for Suicide Prevention (2018). Suicide Statistics Retrieved from https://afsp.org/about-suicide/suicide-statistics/
 </span><br/>
 <span style="color: #B6B6B6; font-size: 12px; font-weight: 300;">
 [2] Vijayakumar L. (2015). Suicide in women. _Indian journal of psychiatry_, 57(Suppl 2), S233-8.
