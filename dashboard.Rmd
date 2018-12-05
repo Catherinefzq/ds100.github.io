@@ -31,12 +31,12 @@ data_IM_JZ = injury_data %>%
     injury_mechanism == 'All Mechanisms')
 ```
 
-#### The following plots demonstrate our findings. Please feel free to check out corresponding dashboards.
+### The following plots demonstrate our findings. Please feel free to check out corresponding dashboards.
 <br/><br/>
 
-#### _Analysis by Race_
+## _Analysis by Race_
 
-Click [**here**](flexdashboard_race.html) to see the dashboard for analysis by race.
+### Click [**here**](flexdashboard_race.html) to see the dashboard for analysis by race.
 
 ```{r BRFSS_IM_year_race, echo=FALSE}
 BRFSS_race_plot =
@@ -79,9 +79,9 @@ data_IM_JZ %>%
 BRFSS_race_plot + IM_race_plot
 ```
 
-#### _Analysis by Gender_
+## _Analysis by Gender_
 
-Click [**here**](flexdashboard_gender.html) to see the dashboard for analysis by gender.
+### Click [**here**](flexdashboard_gender.html) to see the dashboard for analysis by gender.
 
 ```{r BRFSS_IM_year_gender, echo=FALSE}
 BRFSS_gender_plot = 
@@ -117,9 +117,9 @@ data_IM_JZ %>%
 BRFSS_gender_plot + IM_gender_plot
 ```
 
-#### _Analysis by Age_
+## _Analysis by Age_
 
-Click [**here**](flexdashboard_age.html) to see the dashboard for analysis by age.
+### Click [**here**](flexdashboard_age.html) to see the dashboard for analysis by age.
 
 ```{r BRFSS_IM_year_age, echo=FALSE}
 BRFSS_age_plot = 
