@@ -1,0 +1,17 @@
+---
+title: "Screencast"
+---
+
+```{r loading_library, include=FALSE}
+library("vembedr")
+```
+***
+<br/><br/>
+
+<center>
+```{r echo = FALSE}
+embed_url("https://www.youtube.com/watch?v=687q84wWI_o&feature=youtu.be")
+```
+</center>
+
+<br/><br/>

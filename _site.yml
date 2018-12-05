@@ -8,8 +8,10 @@ navbar:
       href: dashboard.html 
     - text: "About"
       href: about.html
+    - icon: fa-video-camera fa-lg
+      href: screencast.html
     - icon: fa-github
-      href: https://github.com/Catherinefzq/ds100.github.io
+      href: https://github.com/Catherinefzq/p8105_fp_ds100
     
 output:
   html_document:
