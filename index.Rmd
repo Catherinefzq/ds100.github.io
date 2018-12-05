@@ -92,8 +92,9 @@ summary(fit_suicide_final) %>%
   select(term, estimate, p.value) %>%
   mutate(term = str_replace(term, "^sex", "sex: "),
          term = str_replace(term, "^race", "race: "),
-         term = str_replace(term, "^age_group_years", "age group: ")) %>% 
-  knitr::kable(digits = 3)
+         term = str_replace(term, "^age_group_years", "age group: "),
+         p.value = ifelse(p.value < 0.001, '< 0.001', round(p.value, digits = 3))) %>% 
+  knitr::kable(align = c("l", "r", "r"))
 
 ```
 
@@ -119,8 +120,9 @@ fit_age = lm(data_value ~ age_group, data = new_brfss_age)
 summary(fit_age) %>% 
   broom::tidy() %>% 
   select(term, estimate, p.value) %>%
-  mutate(term = str_replace(term, "age_group", "age group: "))%>% 
-  knitr::kable(digits = 3)
+  mutate(term = str_replace(term, "age_group", "age group: "),
+         p.value = ifelse(p.value < 0.001, '< 0.001', round(p.value, digits = 3)))%>% 
+  knitr::kable(align = c("l", "r", "r"))
 ```
 
 
@@ -143,8 +145,9 @@ fit_gender = lm(data_value ~ gender, data = new_brfss_gender)
 summary(fit_gender) %>% 
   broom::tidy() %>% 
   select(term, estimate, p.value) %>%
-  mutate(term = str_replace(term, "^gender", "sex: "))%>% 
-  knitr::kable(digits = 3)
+  mutate(term = str_replace(term, "^gender", "sex: "),
+         p.value = ifelse(p.value < 0.001, '< 0.001', round(p.value, digits = 3)))%>% 
+  knitr::kable(align = c("l", "r", "r"))
 ```
 
 
@@ -167,8 +170,9 @@ fit_race = lm(data_value ~ race_ethnicity, data = new_brfss_race)
 summary(fit_race) %>% 
   broom::tidy() %>% 
   select(term, estimate, p.value) %>%
-  mutate(term = str_replace(term, "^race_ethnicity", "race: "))%>% 
-  knitr::kable(digits = 3)
+  mutate(term = str_replace(term, "^race_ethnicity", "race: "),
+         p.value = ifelse(p.value < 0.001, '< 0.001', round(p.value, digits = 3)))%>% 
+  knitr::kable(align = c("l", "r", "r"))
 ```
 
 
