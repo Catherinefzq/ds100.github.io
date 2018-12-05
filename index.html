@@ -11,7 +11,7 @@
 
 
 
-<title>The Relationship between Suicide Rates and Depression Prevalence by Race, Gender and Age in the U.S.</title>
+<title>The Relationship between Suicide Rate and Depression Prevalence by Race, Gender and Age in the U.S.</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -305,45 +305,53 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">The Relationship between Suicide Rates and Depression Prevalence by Race, Gender and Age in the U.S.</h1>
+<h1 class="title toc-ignore">The Relationship between Suicide Rate and Depression Prevalence by Race, Gender and Age in the U.S.</h1>
 
 </div>
 
 
 <p><br><br><img src="images/suicide.jpg" alt="logo"><br></p>
-<div id="motivation" class="section level3">
-<h3>Motivation</h3>
+<div id="motivation" class="section level1">
+<h1><strong>Motivation</strong></h1>
 <p>Suicide is a leading cause of death in the US. Suicide rates increased in nearly every state from 1999 through 2016. Mental health conditions are often seen as the cause of suicide, but suicide is rarely caused by any single factor. In fact, many people who died by suicide are not known to have a diagnosed mental health condition at the time of death. We are interested in examining the variations of suicide death rates among different categorical variables such as gender, race, age group, and to test if the observed differences are statistically significant combined with the analysis to suicide death rate and related confidence interval.</p>
 </div>
-<div id="related-work" class="section level3">
-<h3>Related work</h3>
+<div id="related-work" class="section level1">
+<h1><strong>Related work</strong></h1>
 <p>Suicide has ranked as the 10th leading cause of death among Americans for many years. <a href="https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503" class="uri">https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503</a></p>
 </div>
-<div id="initial-questions" class="section level3">
-<h3>Initial questions</h3>
-<p>[What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?]</p>
+<div id="initial-questions" class="section level1">
+<h1><strong>Initial Questions</strong></h1>
+<p>The initial thought of this project is to discover the relationship between suicide and people’s mental status. We have found two separated datasets, in which one is the Injury Mortality data in the US, the other contains people’s depression status in the US. Since both of the two datasets contain information for age, race, and gender, we decided to compare the trend of suicide death rates with depression prevalence under these three categories.</p>
 </div>
-<div id="data-sources" class="section level3">
-<h3>Data Sources</h3>
+<div id="data-sources" class="section level1">
+<h1><strong>Data Sources</strong></h1>
 <p>We include two datasets in our project.</p>
-<p><strong>BRFSS Prevalence Data (2011 to present)</strong></p>
+<div id="brfss-prevalence-data-2011-to-present" class="section level3">
+<h3><em>BRFSS Prevalence Data (2011 to present)</em></h3>
 <p>Data from the Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data (2011 to present) were accessed from <a href="https://chronicdata.cdc.gov/Behavioral-Risk-Factors/Behavioral-Risk-Factor-Surveillance-System-BRFSS-P/dttw-5yxu">cdc.gov.</a> BRFSS is a continuous, state-based surveillance system that collects information about modifiable risk factors for chronic diseases and other leading causes of death. The version of the data that we will use in this analysis can be found in our <a href="https://github.com/Catherinefzq/ds100.github.io/tree/master/data">Github repository</a>.</p>
-<p><strong>NCHS - Injury Mortality: United States</strong></p>
+</div>
+<div id="nchs---injury-mortality-united-states" class="section level3">
+<h3><em>NCHS - Injury Mortality: United States</em></h3>
 <p>Data from the NCHS - Injury Mortality: United States were accessed from <a href="https://data.cdc.gov/NCHS/NCHS-Injury-Mortality-United-States/nt65-c7a7">data.cdc.gov.</a> This dataset describes injury mortality in the United States beginning in 1999. Two concepts are included in the circumstances of an injury death: intent of injury and mechanism of injury. In our project, we focus on intent of injury, specifically suicide. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia.</p>
 </div>
-<div id="analyses" class="section level3">
-<h3>Analyses</h3>
-<div id="data-visualizations" class="section level4">
-<h4>Data Visualizations</h4>
-<p>We explore our data by race, gender, and age.</p>
 </div>
-<div id="statistical-analysis" class="section level4">
-<h4>Statistical Analysis</h4>
-<p>[If you undertake formal statistical analyses, describe these in detail]</p>
+<div id="analyses" class="section level1">
+<h1><strong>Analyses</strong></h1>
+<div id="data-visualizations" class="section level2">
+<h2>Data Visualizations</h2>
+<p>We explore our data by race, gender, and age. Our findings are include in the <a href="dashboard.html">dashboards</a>.</p>
+</div>
+<div id="statistical-analysis" class="section level2">
+<h2>Statistical Analysis</h2>
+<p>Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS dataset.</p>
+<p><strong>Model 1:</strong> Suicide Death Rate = 7.84 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.745 I{25 &lt; age &lt; 44} + 7.531 I{45 &lt; age &lt; 64} + 6.362 I{age &gt;= 65} + 0.212 I{year = 2012} + 0.215 I{year = 2013} + 0.707 I{year = 2014} + 0.778 I{year = 2015} + 1.05 I{year = 2016}</p>
+<p><strong>Model 2(Age):</strong> Depression Rate = 16.486 + 2.31 I{25 &lt; age &lt; 44} + 4.528 I{45 &lt; age &lt; 64} - 2.125 I{age &gt;= 65}</p>
+<p><strong>Model 3(Gender):</strong> Depression Rate = 13.66 + 9.028 I{gender = female}</p>
+<p><strong>Model 4(Race):</strong> Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}</p>
 </div>
 </div>
-<div id="conclusion" class="section level3">
-<h3>Conclusion</h3>
+<div id="conclusion" class="section level1">
+<h1><strong>Conclusion</strong></h1>
 <p>[What were your findings? Are they what you expect? What insights into the data can you make?]</p>
 </div>
 

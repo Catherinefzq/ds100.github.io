@@ -1,5 +1,5 @@
 ---
-title: "The Relationship between Suicide Rates and Depression Prevalence by Race, Gender and Age in the U.S."
+title: "The Relationship between Suicide Rate and Depression Prevalence by Race, Gender and Age in the U.S."
 output: 
    html_document:
     toc: true
@@ -8,43 +8,50 @@ output:
 
 <br><br><img src="images/suicide.jpg" alt="logo"><br>
 
-### Motivation
+# __Motivation__
 
 Suicide is a leading cause of death in the US. Suicide rates increased in nearly every state from 1999 through 2016. Mental health conditions are often seen as the cause of suicide, but suicide is rarely caused by any single factor. In fact, many people who died by suicide are not known to have a diagnosed mental health condition at the time of death. We are interested in examining the variations of suicide death rates among different categorical variables such as gender, race, age group, and to test if the observed differences are statistically significant combined with the analysis to suicide death rate and related confidence interval.
 
-### Related work
+# __Related work__
 
 Suicide has ranked as the 10th leading cause of death among Americans for many years. https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
 
-### Initial questions
+# __Initial Questions__
 
-[What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?]
+The initial thought of this project is to discover the relationship between suicide and people's mental status. We have found two separated datasets, in which one is the Injury Mortality data in the US, the other contains people's depression status in the US. Since both of the two datasets contain information for age, race, and gender, we decided to compare the trend of suicide death rates with depression prevalence under these three categories.
 
-### Data Sources
+# __Data Sources__
 
 We include two datasets in our project.
 
-__BRFSS Prevalence Data (2011 to present)__
+### _BRFSS Prevalence Data (2011 to present)_
 
 Data from the Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data (2011 to present) were accessed from [cdc.gov.](https://chronicdata.cdc.gov/Behavioral-Risk-Factors/Behavioral-Risk-Factor-Surveillance-System-BRFSS-P/dttw-5yxu) BRFSS is a continuous, state-based surveillance system that collects information about modifiable risk factors for chronic diseases and other leading causes of death. The version of the data that we will use in this analysis can be found in our [Github repository](https://github.com/Catherinefzq/ds100.github.io/tree/master/data).
 
-__NCHS - Injury Mortality: United States__
+### _NCHS - Injury Mortality: United States_
 
 Data from the NCHS - Injury Mortality: United States were accessed from [data.cdc.gov.](https://data.cdc.gov/NCHS/NCHS-Injury-Mortality-United-States/nt65-c7a7) 
 This dataset describes injury mortality in the United States beginning in 1999. Two concepts are included in the circumstances of an injury death: intent of injury and mechanism of injury. In our project, we focus on intent of injury, specifically suicide. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia.
 
-### Analyses
+# __Analyses__
 
-#### Data Visualizations
+## Data Visualizations
 
-We explore our data by race, gender, and age. 
+We explore our data by race, gender, and age. Our findings are include in the [dashboards](dashboard.html).
 
 
+## Statistical Analysis
 
-#### Statistical Analysis
+Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS dataset. 
 
-[If you undertake formal statistical analyses, describe these in detail]
+__Model 1:__ Suicide Death Rate = 7.84 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.745 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65} + 0.212 I{year = 2012} + 0.215 I{year = 2013} + 0.707 I{year = 2014} + 0.778 I{year = 2015} + 1.05 I{year = 2016}
 
-### Conclusion
+__Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
+
+__Model 3(Gender):__ Depression Rate = 13.66 + 9.028 I{gender = female}
+
+__Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}
+
+# __Conclusion__
 
 [What were your findings? Are they what you expect? What insights into the data can you make?]
