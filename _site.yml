@@ -1,4 +1,4 @@
-name: "Group Project website"
+name: "DS100 Group Project Website"
 output_dir: "."
 create_dir: false
 navbar:
@@ -6,11 +6,11 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - icon: fa-envelope fa-lg
-      href: mailto:<zf2212@cumc.columbia.edu>
+    - icon: fa-github
+      href: https://github.com/Catherinefzq/ds100.github.io
     - text: "Dashboard"
       href: dashboard.html 
     
 output:
   html_document:
-    theme: journal
+    theme: cosmo

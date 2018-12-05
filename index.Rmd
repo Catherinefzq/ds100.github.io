@@ -4,34 +4,45 @@ output:
    html_document:
     toc: true
     toc_float: true
-    code_folding: hide
 ---
 
 ### Motivation
 
-[Provide an overview of the project goals and motivation.]
+Suicide is a leading cause of death in the US. Suicide rates increased in nearly every state from 1999 through 2016. Mental health conditions are often seen as the cause of suicide, but suicide is rarely caused by any single factor. In fact, many people who died by suicide are not known to have a diagnosed mental health condition at the time of death. We are interested in examining the variations of suicide death rates among different categorical variables such as gender, race, age group, and to test if the observed differences are statistically significant combined with the analysis to suicide death rate and related confidence interval.
 
 ### Related work
 
-[Anything that inspired you, such as a paper, a web site, or something we discussed in class.]
+Suicide has ranked as the 10th leading cause of death among Americans for many years. https://www.verywellmind.com/suicide-rates-overstated-in-people-with-depression-2330503
 
 ### Initial questions
 
 [What questions are you trying to answer? How did these questions evolve over the course of the project? What new questions did you consider in the course of your analysis?]
 
-### Data
+### Data Sources
 
-[Source, scraping method, cleaning, etc.]
+We include two datasets in our project.
 
-### Exploratory analysis
+__BRFSS Prevalence Data (2011 to present)__
 
+Data from the Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data (2011 to present) were accessed from [cdc.gov.](https://chronicdata.cdc.gov/Behavioral-Risk-Factors/Behavioral-Risk-Factor-Surveillance-System-BRFSS-P/dttw-5yxu) BRFSS is a continuous, state-based surveillance system that collects information about modifiable risk factors for chronic diseases and other leading causes of death. The version of the data that we will use in this analysis can be found in our [Github repository](https://github.com/Catherinefzq/ds100.github.io/tree/master/data).
+
+__NCHS - Injury Mortality: United States__
+
+Data from the NCHS - Injury Mortality: United States were accessed from [data.cdc.gov.](https://data.cdc.gov/NCHS/NCHS-Injury-Mortality-United-States/nt65-c7a7) 
+This dataset describes injury mortality in the United States beginning in 1999. Two concepts are included in the circumstances of an injury death: intent of injury and mechanism of injury. In our project, we focus on intent of injury, specifically suicide. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia.
+
+### Analyses
+
+#### Exploratory analysis
+
+We explore our data by race, gender, and age. 
 [Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.]
 
 
-### Additional analysis
+#### Additional analysis
 
 [If you undertake formal statistical analyses, describe these in detail]
 
-### Discussion
+### Conclusion
 
 [What were your findings? Are they what you expect? What insights into the data can you make?]
