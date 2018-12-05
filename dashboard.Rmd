@@ -1,0 +1,12 @@
+---
+title: "dashboard"
+---
+<br/><br/>
+[**flexdashborad_race**](flexdashboard_race.html)
+
+
+[**flexdashboard_gender**](flexdashboard_gender.html)
+
+
+[**flexdashboard_age**](flexdashboard_age.html)
+

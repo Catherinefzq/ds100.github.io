@@ -1,4 +1,4 @@
-name: "zhiqian website"
+name: "Group Project website"
 output_dir: "."
 create_dir: false
 navbar:
@@ -9,7 +9,7 @@ navbar:
     - icon: fa-envelope fa-lg
       href: mailto:<zf2212@cumc.columbia.edu>
     - text: "Dashboard"
-      href: flexdashboard.html 
+      href: dashboard.html 
     
 output:
   html_document:
