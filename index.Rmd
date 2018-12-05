@@ -48,7 +48,7 @@ By gender, female tend to have a higher depression prevalence than male. However
 ## Statistical Analysis
 
 Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS Injury Mortality dataset. 
-__Model 1:__ Suicide Death Rate = 7.84 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.745 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65} + 0.212 I{year = 2012} + 0.215 I{year = 2013} + 0.707 I{year = 2014} + 0.778 I{year = 2015} + 1.05 I{year = 2016}
+__Model 1:__ Suicide Death Rate = 8.334 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.475 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65}
 
 __Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
 
