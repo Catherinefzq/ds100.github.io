@@ -47,13 +47,68 @@ By gender, female tend to have a higher depression prevalence than male. However
 
 ## Statistical Analysis
 
-Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS Injury Mortality dataset.  
+Based on our data, we built 4 models, including three simple linear regression models for BRFSS dataset and one multiple linear regression model for NCHS Injury Mortality dataset. 
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+library(tidyverse)
+
+```
+
+
+```{r, message = FALSE}
+brfss_data = read_csv("./data/brfss_data.csv") %>% 
+  janitor::clean_names()
+injury_data = read_csv("./data/NCHS_-_Injury_Mortality__United_States.csv") %>% 
+  janitor::clean_names()
+
+new_injury = 
+  injury_data %>% 
+  filter(injury_mechanism == "All Mechanisms",
+         injury_intent == "Suicide",
+         year  %in%  c(2011, 2012, 2013, 2014, 2015, 2016),
+         age_group_years != "All Ages",
+         race != "All races",
+         sex != "Both sexes") %>%
+  mutate(suicide_dr = (deaths / population) * 100000,
+         age_group_years = str_replace(age_group_years, "< 15", "<25"),
+         age_group_years = str_replace(age_group_years,"15–24", "<25"),
+         age_group_years = str_replace(age_group_years,"65–74", "65+"),
+         age_group_years = str_replace(age_group_years,"75+", "65")) %>% 
+  select(year, sex, age_group_years, race, suicide_dr) %>% 
+  mutate(sex = as.factor(ifelse(sex == "Male", 0, 1)),
+         race = as.factor(race),
+         age_group_years = as.factor(age_group_years),
+         year = as.factor(year))
+```
+
+### Model 1
 __Model 1:__ Suicide Death Rate = 8.334 - 12.565 I{sex = female} - 0.912 I{race = Non-Hispanic black} + 10.313 I{race = Non-Hispanic white} + 7.475 I{25 < age < 44} + 7.531 I{45 < age < 64} + 6.362 I{age >= 65}
 
+```{r}
+fit_suicide = lm(suicide_dr ~ sex + race + age_group_years + year, data = new_injury)
+summary(fit_suicide) %>% 
+  broom::tidy() %>% 
+  select(term, estimate, p.value) %>%
+  mutate(term = str_replace(term, "^sex", "sex: "),
+         term = str_replace(term, "^race", "race: "),
+         term = str_replace(term, "^age_group_years", "age group years: "),
+         term = str_replace(term, "^year", "year: ")) %>% 
+  knitr::kable(digits = 3)
+
+```
+
+
+### Model 2
 __Model 2(Age):__ Depression Rate = 16.486 + 2.31 I{25 < age < 44} + 4.528 I{45 < age < 64} - 2.125 I{age >= 65}
 
+
+### Model 3
+
 __Model 3(Gender):__ Depression Rate = 13.66 + 9.028 I{gender = female}
+
+
+### Model 4
 
 __Model 4(Race):__ Depression Rate = 17.511 - 1.716 I{race = Black, non-Hispanic} + 1.901 I{race = White, non-Hispanic}
 
