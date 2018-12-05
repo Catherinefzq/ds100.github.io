@@ -6,6 +6,8 @@ output:
     toc_float: true
 ---
 
+<br><br><img src="images/suicide.jpg" alt="logo" style="width:100%"><br>
+
 ### Motivation
 
 Suicide is a leading cause of death in the US. Suicide rates increased in nearly every state from 1999 through 2016. Mental health conditions are often seen as the cause of suicide, but suicide is rarely caused by any single factor. In fact, many people who died by suicide are not known to have a diagnosed mental health condition at the time of death. We are interested in examining the variations of suicide death rates among different categorical variables such as gender, race, age group, and to test if the observed differences are statistically significant combined with the analysis to suicide death rate and related confidence interval.
@@ -33,13 +35,13 @@ This dataset describes injury mortality in the United States beginning in 1999. 
 
 ### Analyses
 
-#### Exploratory analysis
+#### Data Visualizations
 
 We explore our data by race, gender, and age. 
-[Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.]
 
 
-#### Additional analysis
+
+#### Statistical Analysis
 
 [If you undertake formal statistical analyses, describe these in detail]
 
